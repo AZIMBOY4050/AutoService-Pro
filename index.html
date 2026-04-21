@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoService Pro</title>
+  <meta id="page-description" name="description" content="Professional auto service booking and workshop dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <div class="page-frame">
+    <header class="site-header">
+      <button class="brand" type="button" data-route="home" aria-label="Go to home page">
+        <span>AUTO</span>SERVICE
+      </button>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link is-active" type="button" data-route="home" data-i18n="nav.home">Home</button>
+        <button class="nav-link" type="button" data-route="services" data-i18n="nav.services">Services</button>
+        <button class="nav-link" type="button" data-route="booking" data-i18n="nav.booking">Booking</button>
+        <button class="nav-link hidden" type="button" data-route="account" data-nav-account data-i18n="nav.account">Account</button>
+        <button class="nav-link nav-link-admin hidden" type="button" data-admin-entry data-nav-admin data-i18n="nav.admin">Admin</button>
+      </nav>
+
+      <div class="header-tools">
+        <div class="lang-switcher" aria-label="Language selector">
+          <button class="lang-btn is-active" type="button" data-language="en">EN</button>
+          <button class="lang-btn" type="button" data-language="ru">RU</button>
+          <button class="lang-btn" type="button" data-language="uz">UZ</button>
+        </div>
+        <div id="session-actions" class="session-actions"></div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section id="page-home" class="page is-active">
+        <section class="hero-grid panel">
+          <div class="hero-primary">
+            <div class="eyebrow" data-i18n="home.heroEyebrow">Workshop scheduling system</div>
+            <h1 class="display-title" data-i18n-html="home.heroTitle">PRECISE <span>AUTO</span> SERVICE</h1>
+            <p class="lead-copy" data-i18n="home.heroCopy">
+              Calm, professional online booking for clients and a clean dashboard for service managers.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="button" data-route="booking" data-i18n="actions.bookNow">Book now</button>
+              <button class="btn btn-secondary" type="button" data-route="services" data-i18n="actions.viewServices">View services</button>
+            </div>
+
+            <div class="trust-strip">
+              <div class="trust-item">
+                <strong>24/7</strong>
+                <span data-i18n="home.trustAlways">Request capture</span>
+              </div>
+              <div class="trust-item">
+                <strong>3</strong>
+                <span data-i18n="home.trustLanguages">Clear languages</span>
+              </div>
+              <div class="trust-item">
+                <strong>1</strong>
+                <span data-i18n="home.trustPanel">Unified admin panel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-secondary">
+            <article class="overview-card panel-inset">
+              <div class="eyebrow" data-i18n="home.overviewEyebrow">Operations overview</div>
+              <h2 class="block-title" data-i18n="home.overviewTitle">Built for booking flow and workshop control</h2>
+              <p class="section-copy" data-i18n="home.overviewCopy">
+                The interface keeps client booking, service visibility and administrator actions in one visual system.
+              </p>
+            </article>
+
+            <div class="hero-metrics">
+              <article class="metric-card">
+                <span data-i18n="home.metricYearsLabel">Years of experience</span>
+                <strong>12+</strong>
+              </article>
+              <article class="metric-card">
+                <span data-i18n="home.metricClientsLabel">Cars serviced</span>
+                <strong>4,800</strong>
+              </article>
+              <article class="metric-card">
+                <span data-i18n="home.metricSatisfactionLabel">Client satisfaction</span>
+                <strong>98%</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-strip">
+          <article class="feature-card panel">
+            <div class="eyebrow" data-i18n="home.featureFlowEyebrow">Client flow</div>
+            <h2 class="block-title" data-i18n="home.featureFlowTitle">Booking in three clean steps</h2>
+            <p class="section-copy" data-i18n="home.featureFlowCopy">
+              Service, date and contact details are handled in one calm sequence without extra clutter.
+            </p>
+          </article>
+
+          <article class="feature-card panel">
+            <div class="eyebrow" data-i18n="home.featureSlotsEyebrow">Availability</div>
+            <h2 class="block-title" data-i18n="home.featureSlotsTitle">Live time-slot control</h2>
+            <p class="section-copy" data-i18n="home.featureSlotsCopy">
+              Occupied times are blocked automatically so booking conflicts stay out of the workflow.
+            </p>
+          </article>
+
+          <article class="feature-card panel">
+            <div class="eyebrow" data-i18n="home.featureAdminEyebrow">Administration</div>
+            <h2 class="block-title" data-i18n="home.featureAdminTitle">Dashboard for bookings, services and clients</h2>
+            <p class="section-copy" data-i18n="home.featureAdminCopy">
+              Managers can confirm requests, update services and review customers from one place.
+            </p>
+          </article>
+        </section>
+
+        <section class="content-block panel">
+          <div class="section-top">
+            <div>
+              <div class="eyebrow" data-i18n="home.catalogEyebrow">Selected services</div>
+              <h2 class="section-title" data-i18n="home.catalogTitle">Popular workshop requests</h2>
+            </div>
+            <button class="btn btn-ghost" type="button" data-route="services" data-i18n="actions.allServices">All services</button>
+          </div>
+
+          <div id="home-services-grid" class="service-grid"></div>
+        </section>
+      </section>
+
+      <section id="page-services" class="page">
+        <section class="content-block panel">
+          <div class="section-top">
+            <div>
+              <div class="eyebrow" data-i18n="services.eyebrow">Service catalog</div>
+              <h2 class="section-title" data-i18n="services.title">Available workshop services</h2>
+              <p class="section-copy" data-i18n="services.copy">
+                Every card shows price, duration and booking entry so the client can act immediately.
+              </p>
+            </div>
+          </div>
+
+          <div id="all-services-grid" class="service-grid"></div>
+        </section>
+      </section>
+
+      <section id="page-booking" class="page">
+        <div class="booking-shell">
+          <section class="booking-main panel">
+            <div class="section-top booking-top">
+              <div>
+                <div class="eyebrow" data-i18n="booking.eyebrow">Booking flow</div>
+                <h2 class="section-title" data-i18n="booking.title">Online service booking</h2>
+              </div>
+            </div>
+
+            <div class="stepper" aria-label="Booking steps">
+              <div class="step is-active" data-step-indicator="1">
+                <span class="step-number">1</span>
+                <span class="step-label" data-i18n="booking.stepService">Service</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step-indicator="2">
+                <span class="step-number">2</span>
+                <span class="step-label" data-i18n="booking.stepDateTime">Date &amp; Time</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step-indicator="3">
+                <span class="step-number">3</span>
+                <span class="step-label" data-i18n="booking.stepContact">Contact</span>
+              </div>
+            </div>
+
+            <div id="booking-alert" class="inline-alert hidden" role="alert" aria-live="polite"></div>
+
+            <section class="booking-step is-active" data-step-panel="1">
+              <div class="step-header">
+                <div class="eyebrow" data-i18n="booking.step01Eyebrow">Step 01</div>
+                <h3 data-i18n="booking.step01Title">Choose a service</h3>
+                <p data-i18n="booking.step01Copy">Select the workshop service first. Then available dates and time slots will open.</p>
+              </div>
+
+              <div id="booking-services-grid" class="service-grid"></div>
+
+              <div class="step-actions">
+                <button class="btn btn-primary" type="button" data-go-step="2" data-i18n="actions.continue">Continue</button>
+              </div>
+            </section>
+
+            <section class="booking-step" data-step-panel="2">
+              <div class="step-header">
+                <div class="eyebrow" data-i18n="booking.step02Eyebrow">Step 02</div>
+                <h3 data-i18n="booking.step02Title">Select date and time</h3>
+                <p data-i18n="booking.step02Copy">Choose a free workday and then pick one of the available service slots.</p>
+              </div>
+
+              <div class="calendar panel-inset">
+                <div class="calendar-header">
+                  <button class="icon-button" type="button" data-calendar-nav="-1" data-i18n-aria-label="calendar.previousMonth" aria-label="Previous month">
+                    &lsaquo;
+                  </button>
+
+                  <div class="calendar-heading">
+                    <span class="calendar-caption" data-i18n="calendar.caption">Choose a workshop day</span>
+                    <strong id="calendar-title"></strong>
+                  </div>
+
+                  <button class="icon-button" type="button" data-calendar-nav="1" data-i18n-aria-label="calendar.nextMonth" aria-label="Next month">
+                    &rsaquo;
+                  </button>
+                </div>
+
+                <div class="calendar-legend" aria-hidden="true">
+                  <span><i class="legend-swatch legend-open"></i><span data-i18n="calendar.available">Available</span></span>
+                  <span><i class="legend-swatch legend-today"></i><span data-i18n="calendar.today">Today</span></span>
+                  <span><i class="legend-swatch legend-selected"></i><span data-i18n="calendar.selected">Selected</span></span>
+                  <span><i class="legend-swatch legend-disabled"></i><span data-i18n="calendar.unavailable">Unavailable</span></span>
+                </div>
+
+                <div id="calendar-weekdays" class="calendar-weekdays"></div>
+                <div id="calendar-grid" class="calendar-grid"></div>
+              </div>
+
+              <div id="time-panel" class="time-panel hidden">
+                <div class="section-top compact">
+                  <div>
+                    <div class="eyebrow" data-i18n="booking.availableSlotsEyebrow">Available slots</div>
+                    <h3 class="minor-title" data-i18n="booking.availableSlotsTitle">Choose free time</h3>
+                  </div>
+                </div>
+
+                <div id="time-slots" class="time-slots"></div>
+                <p id="time-note" class="time-note"></p>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn btn-secondary" type="button" data-go-step="1" data-i18n="actions.back">Back</button>
+                <button class="btn btn-primary" type="button" data-go-step="3" data-i18n="actions.continue">Continue</button>
+              </div>
+            </section>
+
+            <section class="booking-step" data-step-panel="3">
+              <div class="step-header">
+                <div class="eyebrow" data-i18n="booking.step03Eyebrow">Step 03</div>
+                <h3 data-i18n="booking.step03Title">Confirm customer and vehicle details</h3>
+                <p data-i18n="booking.step03Copy">
+                  Booking submission requires a customer account. Profile data is loaded from the signed-in user and the vehicle
+                  is selected from the saved garage.
+                </p>
+              </div>
+
+              <div id="booking-auth-hint" class="inline-alert hidden" role="alert"></div>
+
+              <form id="booking-form" class="form-grid" novalidate>
+                <div class="form-row">
+                  <label class="field">
+                    <span data-i18n="fields.customerName">Customer name</span>
+                    <input type="text" name="customerName" id="booking-customer-name" autocomplete="name" disabled>
+                  </label>
+
+                  <label class="field">
+                    <span data-i18n="fields.phone">Phone</span>
+                    <input type="text" name="customerPhone" id="booking-customer-phone" autocomplete="tel" disabled>
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span data-i18n="fields.email">Email</span>
+                  <input type="email" name="customerEmail" id="booking-customer-email" autocomplete="email" disabled>
+                </label>
+
+                <label class="field">
+                  <span data-i18n="fields.vehicle">Select vehicle</span>
+                  <select name="vehicleId" id="booking-vehicle-select"></select>
+                </label>
+
+                <label class="field">
+                  <span data-i18n="fields.notes">Notes</span>
+                  <textarea name="notes" id="booking-notes" rows="4" data-i18n-placeholder="placeholders.notes" placeholder="Describe the issue or any details for the technician"></textarea>
+                </label>
+
+                <div class="step-actions">
+                  <button class="btn btn-secondary" type="button" data-go-step="2" data-i18n="actions.back">Back</button>
+                  <button class="btn btn-primary" type="submit" data-i18n="actions.confirmBooking">Confirm booking</button>
+                </div>
+              </form>
+            </section>
+          </section>
+
+          <aside class="booking-sidebar panel">
+            <div class="eyebrow" data-i18n="summary.eyebrow">Booking summary</div>
+            <h3 class="minor-title" data-i18n="summary.title">Request overview</h3>
+
+            <div class="summary-list">
+              <div class="summary-item">
+                <span data-i18n="summary.service">Service</span>
+                <strong id="summary-service">Not selected</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="summary.date">Date</span>
+                <strong id="summary-date">Not selected</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="summary.time">Time</span>
+                <strong id="summary-time">Not selected</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="summary.duration">Duration</span>
+                <strong id="summary-duration">--</strong>
+              </div>
+            </div>
+
+            <div class="summary-total">
+              <span data-i18n="summary.price">Price</span>
+              <strong id="summary-price">--</strong>
+            </div>
+
+            <p class="sidebar-note" data-i18n="summary.note">
+              After submitting the request you will receive a booking number and a confirmation screen.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="page-confirm" class="page">
+        <section class="confirm-panel panel">
+          <div class="confirm-icon">✓</div>
+          <div class="eyebrow" data-i18n="confirm.eyebrow">Booking status</div>
+          <h2 class="confirm-title" data-i18n-html="confirm.title">BOOKING <span>CONFIRMED</span></h2>
+          <p id="confirm-number" class="confirm-number">Reference number will appear after booking is created.</p>
+          <div id="confirm-details" class="confirm-details"></div>
+          <p id="confirm-note" class="confirm-note" data-i18n="confirm.note">
+            The administrator can confirm or cancel the booking from the dashboard.
+          </p>
+          <button class="btn btn-primary" type="button" data-route="home" data-i18n="actions.backHome">Back to home</button>
+        </section>
+      </section>
+
+      <section id="page-auth" class="page">
+        <section class="auth-screen">
+          <div class="auth-card panel">
+            <div class="eyebrow" data-i18n="auth.eyebrow">Secure access</div>
+            <h2 data-i18n="auth.title">Customer registration and login</h2>
+            <p class="section-copy" data-i18n="auth.copy">
+              Customers register with name, email, phone and password. Administrators use the same sign-in form with the seeded admin account.
+            </p>
+
+            <div class="auth-switch" role="tablist" aria-label="Authorization mode">
+              <button class="auth-switch-btn is-active" type="button" data-auth-mode="login" data-i18n="auth.signInTab">Sign in</button>
+              <button class="auth-switch-btn" type="button" data-auth-mode="register" data-i18n="auth.registerTab">Register</button>
+            </div>
+
+            <div id="auth-alert" class="inline-alert hidden" role="alert" aria-live="polite"></div>
+
+            <form id="login-form" class="auth-form is-active" novalidate>
+              <label class="field">
+                <span data-i18n="fields.email">Email</span>
+                <input type="email" name="email" autocomplete="username" data-i18n-placeholder="placeholders.email" placeholder="client@example.com">
+              </label>
+
+              <label class="field">
+                <span data-i18n="fields.password">Password</span>
+                <input type="password" name="password" autocomplete="current-password" data-i18n-placeholder="placeholders.passwordLogin" placeholder="Minimum 8 characters">
+              </label>
+
+              <button class="btn btn-primary btn-full" type="submit" data-i18n="actions.signIn">Sign in</button>
+            </form>
+
+            <form id="register-form" class="auth-form" novalidate>
+              <label class="field">
+                <span data-i18n="fields.fullName">Full name</span>
+                <input type="text" name="fullName" autocomplete="name" data-i18n-placeholder="placeholders.fullName" placeholder="Alisher Rahimov">
+              </label>
+
+              <label class="field">
+                <span data-i18n="fields.phone">Phone</span>
+                <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="placeholders.phone" placeholder="+998 90 123 45 67">
+              </label>
+
+              <label class="field">
+                <span data-i18n="fields.email">Email</span>
+                <input type="email" name="email" autocomplete="email" data-i18n-placeholder="placeholders.email" placeholder="client@example.com">
+              </label>
+
+              <label class="field">
+                <span data-i18n="fields.password">Password</span>
+                <input type="password" name="password" autocomplete="new-password" data-i18n-placeholder="placeholders.passwordRegister" placeholder="Minimum 8 characters, letters and numbers">
+              </label>
+
+              <label class="field">
+                <span data-i18n="fields.confirmPassword">Confirm password</span>
+                <input type="password" name="confirmPassword" autocomplete="new-password" data-i18n-placeholder="placeholders.confirmPassword" placeholder="Repeat password">
+              </label>
+
+              <button class="btn btn-primary btn-full" type="submit" data-i18n="actions.createAccount">Create account</button>
+            </form>
+
+            <p class="auth-demo"><span data-i18n="auth.demoLabel">Default admin:</span> <strong>admin@autoservice.local</strong> / <strong>Admin1234</strong></p>
+          </div>
+        </section>
+      </section>
+
+      <section id="page-account" class="page">
+        <section class="content-block panel">
+          <div class="section-top">
+            <div>
+              <div class="eyebrow" data-i18n="account.eyebrow">Customer cabinet</div>
+              <h2 class="section-title" data-i18n="account.title">Profile, vehicles and booking history</h2>
+              <p class="section-copy" data-i18n="account.copy">
+                Manage your account data, save multiple cars and track every booking status in one place.
+              </p>
+            </div>
+            <button class="btn btn-primary" type="button" data-route="booking" data-i18n="actions.newBooking">New booking</button>
+          </div>
+
+          <div id="account-guest-alert" class="inline-alert hidden" role="alert"></div>
+
+          <div class="account-grid">
+            <section class="panel-inset account-card">
+              <div class="section-top compact">
+                <div>
+                  <div class="eyebrow" data-i18n="account.profileEyebrow">Profile</div>
+                  <h3 class="minor-title" data-i18n="account.profileTitle">Edit account details</h3>
+                </div>
+              </div>
+
+              <div id="profile-alert" class="inline-alert hidden" role="alert"></div>
+
+              <form id="profile-form" class="form-grid" novalidate>
+                <label class="field">
+                  <span data-i18n="fields.fullName">Full name</span>
+                  <input type="text" name="fullName" autocomplete="name">
+                </label>
+
+                <div class="form-row">
+                  <label class="field">
+                    <span data-i18n="fields.email">Email</span>
+                    <input type="email" name="email" autocomplete="email">
+                  </label>
+
+                  <label class="field">
+                    <span data-i18n="fields.phone">Phone</span>
+                    <input type="tel" name="phone" autocomplete="tel">
+                  </label>
+                </div>
+
+                <button class="btn btn-primary" type="submit" data-i18n="actions.saveProfile">Save profile</button>
+              </form>
+            </section>
+
+            <section class="panel-inset account-card">
+              <div class="section-top compact">
+                <div>
+                  <div class="eyebrow" data-i18n="account.garageEyebrow">Garage</div>
+                  <h3 class="minor-title" data-i18n="account.garageTitle">Add vehicle</h3>
+                </div>
+              </div>
+
+              <div id="vehicle-alert" class="inline-alert hidden" role="alert"></div>
+
+              <form id="vehicle-form" class="form-grid" novalidate>
+                <div class="form-row">
+                  <label class="field">
+                    <span data-i18n="fields.brand">Brand</span>
+                    <input type="text" name="brand" data-i18n-placeholder="placeholders.brand" placeholder="Chevrolet">
+                  </label>
+
+                  <label class="field">
+                    <span data-i18n="fields.model">Model</span>
+                    <input type="text" name="model" data-i18n-placeholder="placeholders.model" placeholder="Cobalt">
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label class="field">
+                    <span data-i18n="fields.year">Year</span>
+                    <input type="number" name="year" min="1950" max="2100" data-i18n-placeholder="placeholders.year" placeholder="2022">
+                  </label>
+
+                  <label class="field">
+                    <span data-i18n="fields.licensePlate">License plate</span>
+                    <input type="text" name="licensePlate" data-i18n-placeholder="placeholders.licensePlate" placeholder="01A123BC">
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label class="field">
+                    <span data-i18n="fields.vin">VIN</span>
+                    <input type="text" name="vin" data-i18n-placeholder="placeholders.vin" placeholder="XW8ZZZ12345678901">
+                  </label>
+
+                  <label class="field">
+                    <span data-i18n="fields.color">Color</span>
+                    <input type="text" name="color" data-i18n-placeholder="placeholders.color" placeholder="White">
+                  </label>
+                </div>
+
+                <button class="btn btn-primary" type="submit" data-i18n="actions.saveVehicle">Save vehicle</button>
+              </form>
+            </section>
+          </div>
+
+          <section class="table-block">
+            <div class="section-top compact">
+              <div>
+                <div class="eyebrow" data-i18n="account.vehiclesEyebrow">Vehicles</div>
+                <h3 class="minor-title" data-i18n="account.vehiclesTitle">My garage</h3>
+              </div>
+            </div>
+            <div id="account-vehicles" class="account-vehicles"></div>
+          </section>
+
+          <section class="table-block">
+            <div class="section-top compact">
+              <div>
+                <div class="eyebrow" data-i18n="account.bookingsEyebrow">Bookings</div>
+                <h3 class="minor-title" data-i18n="account.bookingsTitle">My booking history</h3>
+              </div>
+            </div>
+            <div id="account-bookings-table" class="data-table"></div>
+          </section>
+
+          <section class="table-block">
+            <div class="section-top compact">
+              <div>
+                <div class="eyebrow" data-i18n="account.notificationsEyebrow">Notifications</div>
+                <h3 class="minor-title" data-i18n="account.notificationsTitle">Latest updates</h3>
+              </div>
+            </div>
+            <div id="notifications-list" class="notifications-list"></div>
+          </section>
+        </section>
+      </section>
+
+      <section id="page-admin" class="page page-admin">
+        <div class="admin-shell">
+          <aside class="admin-sidebar">
+            <div class="admin-sidebar-top">
+              <div class="admin-brand-block">
+                <div class="brand admin-brand"><span>AUTO</span>SERVICE</div>
+                <p class="admin-caption" data-i18n="admin.caption">Administrator workspace</p>
+              </div>
+
+              <div class="admin-nav-marker">Operations board</div>
+
+              <nav class="admin-nav">
+                <button class="admin-link is-active" type="button" data-admin-section="dashboard" data-i18n="admin.dashboard">Dashboard</button>
+                <button class="admin-link" type="button" data-admin-section="bookings" data-i18n="admin.bookings">Bookings</button>
+                <button class="admin-link" type="button" data-admin-section="services" data-i18n="admin.services">Services</button>
+                <button class="admin-link" type="button" data-admin-section="products" data-i18n="admin.products">Products</button>
+                <button class="admin-link" type="button" data-admin-section="clients" data-i18n="admin.clients">Clients</button>
+                <button class="admin-link" type="button" data-admin-section="vehicles" data-i18n="admin.vehicles">Vehicles</button>
+              </nav>
+            </div>
+
+            <div class="admin-sidebar-bottom">
+              <div class="admin-session-card">
+                <span class="admin-session-label">Active session</span>
+                <strong id="admin-sidebar-user">System Administrator</strong>
+                <span id="admin-sidebar-email">admin@autoservice.local</span>
+              </div>
+
+              <button class="btn btn-secondary btn-full admin-logout" type="button" data-logout data-i18n="actions.signOut">Sign out</button>
+            </div>
+          </aside>
+
+          <div class="admin-content">
+            <header class="admin-workspace-head">
+              <div class="admin-workspace-copy">
+                <div class="eyebrow">Control center</div>
+                <h2 class="section-title">Workshop administration</h2>
+                <p class="section-copy admin-workspace-note">Manage requests, services and client data from one operational workspace.</p>
+              </div>
+              <div class="admin-workspace-meta">
+                <div class="admin-date-block">
+                  <span class="admin-date-label">Today</span>
+                  <div id="admin-date" class="admin-date"></div>
+                </div>
+              </div>
+            </header>
+
+            <div id="admin-alert" class="inline-alert hidden" role="status" aria-live="polite"></div>
+
+            <section class="admin-panel panel is-active" data-admin-panel="dashboard">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.overviewEyebrow">Admin overview</div>
+                  <h2 class="section-title" data-i18n="admin.dashboard">Dashboard</h2>
+                </div>
+              </div>
+
+              <div class="admin-metrics">
+                <article class="metric-card">
+                  <span data-i18n="admin.totalRequests">Total requests</span>
+                  <strong id="metric-total">0</strong>
+                </article>
+                <article class="metric-card">
+                  <span data-i18n="admin.pending">Pending</span>
+                  <strong id="metric-pending">0</strong>
+                </article>
+                <article class="metric-card">
+                  <span data-i18n="admin.confirmed">Confirmed</span>
+                  <strong id="metric-confirmed">0</strong>
+                </article>
+                <article class="metric-card">
+                  <span data-i18n="admin.projectedRevenue">Projected revenue</span>
+                  <strong id="metric-revenue">0 UZS</strong>
+                </article>
+              </div>
+
+              <div class="table-block">
+                <div class="section-top compact">
+                  <div>
+                    <div class="eyebrow" data-i18n="admin.latestBookingsEyebrow">Recent bookings</div>
+                    <h3 class="minor-title" data-i18n="admin.latestBookingsTitle">Last workshop requests</h3>
+                  </div>
+                </div>
+                <div id="dashboard-bookings" class="data-table admin-bookings-table admin-bookings-table-compact"></div>
+              </div>
+            </section>
+
+            <section class="admin-panel panel" data-admin-panel="bookings">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.bookingManagementEyebrow">Booking management</div>
+                  <h2 class="section-title" data-i18n="admin.bookingsTitle">All bookings</h2>
+                </div>
+                <label class="field field-inline">
+                  <span data-i18n="admin.statusFilter">Status filter</span>
+                  <select id="admin-booking-filter">
+                    <option value="all" data-i18n="common.all">All</option>
+                    <option value="pending" data-i18n="status.pending">Pending</option>
+                    <option value="confirmed" data-i18n="status.confirmed">Confirmed</option>
+                    <option value="in_progress" data-i18n="status.in_progress">In progress</option>
+                    <option value="completed" data-i18n="status.completed">Completed</option>
+                    <option value="cancelled" data-i18n="status.cancelled">Cancelled</option>
+                    <option value="rejected" data-i18n="status.rejected">Rejected</option>
+                  </select>
+                </label>
+              </div>
+              <div id="bookings-table" class="data-table admin-bookings-table"></div>
+            </section>
+
+            <section class="admin-panel panel" data-admin-panel="services">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.serviceManagementEyebrow">Service management</div>
+                  <h2 class="section-title" data-i18n="admin.servicesTitle">Workshop services</h2>
+                </div>
+                <button class="btn btn-primary" type="button" data-open-service-modal data-i18n="actions.addService">Add service</button>
+              </div>
+              <div id="admin-services-grid" class="service-grid admin-service-grid"></div>
+            </section>
+
+            <section class="admin-panel panel" data-admin-panel="products">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.productManagementEyebrow">Product management</div>
+                  <h2 class="section-title" data-i18n="admin.productsTitle">Products catalog</h2>
+                </div>
+                <button class="btn btn-primary" type="button" data-open-product-modal data-i18n="actions.addProduct">Add product</button>
+              </div>
+              <div id="products-table" class="data-table admin-records-table"></div>
+            </section>
+
+            <section class="admin-panel panel" data-admin-panel="clients">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.clientDatabaseEyebrow">Client database</div>
+                  <h2 class="section-title" data-i18n="admin.clientsTitle">Clients</h2>
+                </div>
+              </div>
+              <div id="clients-table" class="data-table admin-records-table"></div>
+            </section>
+
+            <section class="admin-panel panel" data-admin-panel="vehicles">
+              <div class="section-top">
+                <div>
+                  <div class="eyebrow" data-i18n="admin.vehicleDatabaseEyebrow">Vehicle database</div>
+                  <h2 class="section-title" data-i18n="admin.vehiclesTitle">Client vehicles</h2>
+                </div>
+              </div>
+              <div id="vehicles-table" class="data-table admin-records-table"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="service-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-card panel" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+        <div class="section-top compact">
+          <div>
+            <div class="eyebrow" data-i18n="modal.eyebrow">Service form</div>
+            <h3 id="service-modal-title" class="minor-title">Add service</h3>
+          </div>
+          <button class="icon-button" type="button" data-close-service-modal data-i18n-aria-label="modal.close" aria-label="Close dialog">×</button>
+        </div>
+
+        <div id="service-alert" class="inline-alert hidden" role="alert"></div>
+
+        <form id="service-form" class="form-grid" novalidate>
+          <div class="form-row form-row-3">
+            <label class="field">
+              <span data-i18n="fields.serviceNameEn">Service name (EN)</span>
+              <input type="text" name="nameEn" data-i18n-placeholder="placeholders.serviceNameEn" placeholder="Oil & Filter Change">
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.serviceNameRu">Service name (RU)</span>
+              <input type="text" name="nameRu" data-i18n-placeholder="placeholders.serviceNameRu" placeholder="Замена масла и фильтра">
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.serviceNameUz">Service name (UZ)</span>
+              <input type="text" name="nameUz" data-i18n-placeholder="placeholders.serviceNameUz" placeholder="Moy va filtr almashtirish">
+            </label>
+          </div>
+
+          <div class="form-row form-row-3">
+            <label class="field">
+              <span data-i18n="fields.descriptionEn">Description (EN)</span>
+              <textarea name="descriptionEn" rows="4" data-i18n-placeholder="placeholders.descriptionEn" placeholder="Short service description"></textarea>
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.descriptionRu">Description (RU)</span>
+              <textarea name="descriptionRu" rows="4" data-i18n-placeholder="placeholders.descriptionRu" placeholder="Краткое описание услуги"></textarea>
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.descriptionUz">Description (UZ)</span>
+              <textarea name="descriptionUz" rows="4" data-i18n-placeholder="placeholders.descriptionUz" placeholder="Xizmat haqida qisqa tavsif"></textarea>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span data-i18n="fields.price">Price, UZS</span>
+              <input type="number" name="price" min="1" step="1000" data-i18n-placeholder="placeholders.price" placeholder="250000">
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.duration">Duration, min</span>
+              <input type="number" name="durationMinutes" min="15" step="15" data-i18n-placeholder="placeholders.duration" placeholder="45">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span data-i18n="fields.category">Category</span>
+              <input type="text" name="category" data-i18n-placeholder="placeholders.category" placeholder="Maintenance">
+            </label>
+
+            <label class="field field-checkbox">
+              <span data-i18n="fields.serviceStatus">Service status</span>
+              <div class="checkbox-row">
+                <input type="checkbox" name="isActive" checked>
+                <strong data-i18n="fields.activeBookable">Active and bookable</strong>
+              </div>
+            </label>
+          </div>
+
+          <label class="field">
+            <span data-i18n="fields.iconCode">Icon code</span>
+            <input type="text" name="icon" maxlength="6" data-i18n-placeholder="placeholders.iconCode" placeholder="OIL">
+          </label>
+
+          <div class="step-actions modal-actions">
+            <button class="btn btn-secondary" type="button" data-close-service-modal data-i18n="actions.cancel">Cancel</button>
+            <button class="btn btn-primary" type="submit" data-i18n="actions.save">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="product-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-card panel product-modal-card" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+        <div class="section-top compact">
+          <div>
+            <div class="eyebrow" data-i18n="modal.productEyebrow">Product form</div>
+            <h3 id="product-modal-title" class="minor-title">Add product</h3>
+          </div>
+          <button class="icon-button" type="button" data-close-product-modal data-i18n-aria-label="modal.close" aria-label="Close dialog">&times;</button>
+        </div>
+
+        <div id="product-alert" class="inline-alert hidden" role="alert"></div>
+
+        <form id="product-form" class="form-grid" novalidate>
+          <div class="form-row">
+            <label class="field">
+              <span data-i18n="fields.productTitle">Product title</span>
+              <input type="text" name="title" data-i18n-placeholder="placeholders.productTitle" placeholder="Engine Oil 5W-30">
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.productSku">SKU</span>
+              <input type="text" name="sku" data-i18n-placeholder="placeholders.productSku" placeholder="OIL-5W30">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span data-i18n="fields.unitLabel">Unit</span>
+              <input type="text" name="unitLabel" maxlength="30" data-i18n-placeholder="placeholders.unitLabel" placeholder="pcs">
+            </label>
+
+            <label class="field">
+              <span data-i18n="fields.stockQuantity">Stock quantity</span>
+              <input type="number" name="stockQuantity" min="0" step="1" data-i18n-placeholder="placeholders.stockQuantity" placeholder="10">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span data-i18n="fields.price">Price, UZS</span>
+              <input type="number" name="price" min="0" step="1000" data-i18n-placeholder="placeholders.productPrice" placeholder="95000">
+            </label>
+
+            <label class="field field-checkbox">
+              <span data-i18n="fields.productStatus">Product status</span>
+              <div class="checkbox-row">
+                <input type="checkbox" name="isActive" checked>
+                <strong data-i18n="fields.productActive">Available for assignment</strong>
+              </div>
+            </label>
+          </div>
+
+          <div class="step-actions modal-actions">
+            <button class="btn btn-secondary" type="button" data-close-product-modal data-i18n="actions.cancel">Cancel</button>
+            <button class="btn btn-primary" type="submit" data-i18n="actions.save">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="booking-products-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-card panel booking-products-modal-card" role="dialog" aria-modal="true" aria-labelledby="booking-products-modal-title">
+        <div class="section-top compact">
+          <div>
+            <div id="booking-products-modal-eyebrow" class="eyebrow">Booking materials</div>
+            <h3 id="booking-products-modal-title" class="minor-title">Confirm booking</h3>
+            <p id="booking-products-modal-meta" class="booking-products-modal-meta"></p>
+          </div>
+          <button class="icon-button" type="button" data-close-booking-products-modal data-i18n-aria-label="modal.close" aria-label="Close dialog">&times;</button>
+        </div>
+
+        <div id="booking-products-alert" class="inline-alert hidden" role="alert"></div>
+
+        <form id="booking-products-form" class="form-grid" novalidate>
+          <label id="booking-products-comment-field" class="field">
+            <span data-i18n="fields.comment">Comment</span>
+            <textarea name="comment" rows="3" data-i18n-placeholder="placeholders.comment" placeholder="Describe the issue or wishes"></textarea>
+          </label>
+
+          <div class="booking-products-editor">
+            <div class="booking-products-editor-head">
+              <div>
+                <strong data-i18n="admin.productsTitle">Products catalog</strong>
+                <p data-i18n="messages.productsModalHint">Select products that go with this booking.</p>
+              </div>
+              <button class="btn btn-secondary" type="button" data-add-booking-product-row data-i18n="actions.addProductRow">Add product</button>
+            </div>
+
+            <div id="booking-products-items" class="booking-products-items"></div>
+          </div>
+
+          <div class="booking-products-summary">
+            <div class="booking-products-summary-row">
+              <span data-i18n="summary.servicePrice">Service price</span>
+              <strong id="booking-products-service-price">0 UZS</strong>
+            </div>
+            <div class="booking-products-summary-row">
+              <span data-i18n="summary.productsPrice">Products total</span>
+              <strong id="booking-products-products-price">0 UZS</strong>
+            </div>
+            <div class="booking-products-summary-row is-total">
+              <span data-i18n="summary.totalPrice">Total price</span>
+              <strong id="booking-products-total-price">0 UZS</strong>
+            </div>
+          </div>
+
+          <div class="step-actions modal-actions">
+            <button class="btn btn-secondary" type="button" data-close-booking-products-modal data-i18n="actions.cancel">Cancel</button>
+            <button id="booking-products-submit" class="btn btn-primary" type="submit" data-i18n="actions.confirmWithProducts">Confirm booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>
